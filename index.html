@@ -152,6 +152,32 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--yellow); outli
 .store-product-card.is-featured .store-product-copy p { color: #b8c8c0; }
 .store-product-card.is-featured .store-product-number, .store-product-card.is-featured .store-product-buy span { color: var(--yellow); }
 
+.funding-promo {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 14px 24px;
+  align-items: center;
+  margin: -30px 0 42px;
+  padding: 24px 28px;
+  border: 1px solid var(--green-650);
+  border-radius: var(--radius);
+  color: #fff;
+  background: var(--green-850);
+}
+.funding-promo[hidden] { display: none; }
+.funding-promo > span { padding: 7px 12px; border-radius: 999px; color: var(--green-950); background: var(--yellow); font-size: .7rem; font-weight: 700; }
+.funding-promo strong { font-size: 1.15rem; letter-spacing: -.025em; }
+.funding-promo small { color: #c7d8d0; font-size: .72rem; }
+.promo-price { display: inline-flex !important; flex-direction: column; gap: 1px; line-height: 1.25; }
+.promo-normal { color: var(--muted); font-size: .56em; font-weight: 500; text-decoration: line-through; text-decoration-thickness: 1px; }
+.promo-current { color: var(--green-650); font-size: 1em; font-weight: 700; }
+.promo-note { color: var(--green-650); font-size: .43em; font-weight: 700; white-space: nowrap; }
+.choice-row > .promo-price { align-items: flex-end; }
+.choice-featured .promo-normal { color: #9eaaa4; }
+.choice-featured .promo-current, .choice-featured .promo-note,
+.store-product-card.is-featured .promo-current, .store-product-card.is-featured .promo-note { color: var(--yellow); }
+.store-product-card.is-featured .promo-normal { color: #9fb0a8; }
+
 .product-simple { grid-template-columns: .9fr 1.1fr; min-height: 620px; }
 .simple-product-media { position: relative; display: grid; place-items: center; overflow: hidden; min-height: 620px; padding: clamp(42px, 5vw, 72px); background-color: var(--green-150); background-image: linear-gradient(rgba(36,114,84,.09) 1px, transparent 1px), linear-gradient(90deg, rgba(36,114,84,.09) 1px, transparent 1px); background-size: 40px 40px; }
 .simple-product-media::after { content: attr(data-label); position: absolute; left: 28px; right: 28px; bottom: 24px; padding-top: 17px; border-top: 1px solid rgba(18,63,50,.25); color: var(--green-650); font-size: .62rem; font-weight: 700; letter-spacing: .14em; }
@@ -367,6 +393,10 @@ footer > div { display: flex; gap: 24px; font-size: .74rem; font-weight: 500; }
   .section-heading { margin-bottom: 44px; }
   .section-heading.compact { margin-bottom: 44px; }
   .section-heading h2 { font-size: clamp(2.1rem, 8.8vw, 2.75rem); line-height: 1.16; }
+  .funding-promo { grid-template-columns: 1fr; gap: 8px; margin: -18px 0 28px; padding: 21px 20px; }
+  .funding-promo > span { justify-self: start; }
+  .funding-promo strong { font-size: 1.02rem; line-height: 1.55; }
+  .funding-promo small { font-size: .68rem; line-height: 1.65; }
   .smartstore-catalog { grid-template-columns: 1fr; gap: 12px; margin-bottom: 42px; }
   .store-product-card { grid-template-columns: 104px minmax(0, 1fr); min-height: 154px; }
   .store-product-card img { min-height: 154px; }
@@ -378,6 +408,8 @@ footer > div { display: flex; gap: 24px; font-size: .74rem; font-weight: 500; }
   .store-product-buy { align-items: center; flex-direction: row; gap: 10px; padding-top: 11px; }
   .store-product-buy strong { font-size: 1.16rem; }
   .store-product-buy span { font-size: .65rem; }
+  .store-product-buy .promo-price { align-items: flex-start; font-size: 1rem; }
+  .store-product-buy .promo-price .promo-note { font-size: .5em; }
   .product, .product.product-simple { min-height: 0; margin-bottom: 20px; border-radius: 10px; }
   .product-visual { min-height: 345px; }
   .actual-documents { width: min(65%, 245px); margin-bottom: 24px; }
@@ -427,6 +459,7 @@ footer > div { display: flex; gap: 24px; font-size: .74rem; font-weight: 500; }
   .comparison-grid dt { display: block; margin-bottom: 5px; color: var(--muted); font-size: .57rem; letter-spacing: .02em; }
   .comparison-grid dd { font-size: .7rem; line-height: 1.55; }
   .comparison-grid dd strong { font-size: 1rem; }
+  .comparison-grid .promo-price .promo-note { white-space: normal; }
   .comparison-grid article > a { justify-content: flex-start; min-height: 54px; height: auto; padding: 13px 14px; color: var(--green-650); border-top: 1px solid var(--line); font-size: .69rem; }
   .comparison-grid .comparison-course { background: var(--green-050); }
   .comparison-grid .comparison-consulting { color: #fff; border-color: var(--green-850); background: var(--green-850); }
@@ -545,6 +578,12 @@ footer > div { display: flex; gap: 24px; font-size: .74rem; font-weight: 500; }
         <p class="eyebrow">FOUR WAYS TO MOVE FORWARD</p>
         <h2 id="products-title">무엇이 필요한지에 따라<br>상품이 달라집니다.</h2>
       </div>
+
+      <aside class="funding-promo" data-funding-promo hidden aria-label="3,000명 펀딩 특별가 안내">
+        <span>3,000명 펀딩가</span>
+        <strong>영상강의 49만원 · 올인원 + 완두 Pro 1년 69만원</strong>
+        <small>9월 6일 23:59까지만 · 이후 정상가 판매</small>
+      </aside>
 
       <div class="smartstore-catalog" id="smartstore-products" aria-label="네이버 스마트스토어 상품 4개">
         <a class="store-product-card" id="product-forms" href="#forms-detail">
@@ -907,6 +946,48 @@ footer > div { display: flex; gap: 24px; font-size: .74rem; font-weight: 500; }
   </div>
 
   <script>
+const fundingPromoEndsAt = new Date('2026-09-07T00:00:00+09:00');
+const fundingPromoIsActive = new Date() < fundingPromoEndsAt;
+
+if (fundingPromoIsActive) {
+  const promoBanner = document.querySelector('[data-funding-promo]');
+  if (promoBanner) promoBanner.hidden = false;
+
+  const fundingPrices = {
+    '790,000원': '490,000원',
+    '990,000원': '690,000원'
+  };
+
+  document.querySelectorAll('strong, b').forEach((priceElement) => {
+    const normalPrice = priceElement.textContent.trim();
+    const promoPrice = fundingPrices[normalPrice];
+    if (!promoPrice) return;
+
+    priceElement.classList.add('promo-price');
+    priceElement.setAttribute('aria-label', `3,000명 펀딩가 ${promoPrice}, 정상가 ${normalPrice}, 9월 6일까지`);
+    priceElement.innerHTML = `<span class="promo-normal">정상가 ${normalPrice}</span><span class="promo-current">${promoPrice}</span><span class="promo-note">3,000명 펀딩가 · 9/6까지</span>`;
+  });
+
+  document.querySelectorAll('.mobile-purchase-bar a').forEach((link) => {
+    const label = link.querySelector('small');
+    const price = link.querySelector('strong');
+    if (!label || !price) return;
+    if (price.textContent.trim() === '79만') {
+      label.textContent = '영상강의 · 9/6';
+      price.textContent = '49만';
+    }
+    if (price.textContent.trim() === '99만') {
+      label.textContent = '올인원 · 9/6';
+      price.textContent = '69만';
+    }
+  });
+
+  document.querySelectorAll('.faq-list p').forEach((paragraph) => {
+    if (!paragraph.textContent.includes('990,000원 올인원 패키지')) return;
+    paragraph.textContent = '9월 6일까지 3,000명 펀딩가 690,000원인 올인원 패키지에 완두 Pro 1년 이용권이 포함됩니다. 영상강의 패키지는 같은 기간 490,000원이며 영상강의·전자책·실습양식 5종과 추가 학습 자료로 구성됩니다. 이후에는 각각 정상가 990,000원·790,000원으로 판매됩니다.';
+  });
+}
+
 const revealTargets = document.querySelectorAll(
   '.section-heading, .product, .consulting-card, .platform-banner, .delivery li, .faq details'
 );
