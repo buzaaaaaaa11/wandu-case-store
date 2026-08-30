@@ -946,10 +946,8 @@ footer > div { display: flex; gap: 24px; font-size: .74rem; font-weight: 500; }
   </div>
 
   <script>
-const fundingPromoStartsAt = new Date('2026-08-30T19:00:00+09:00');
 const fundingPromoEndsAt = new Date('2026-09-07T00:00:00+09:00');
-const fundingPromoNow = new Date();
-const fundingPromoIsActive = fundingPromoNow >= fundingPromoStartsAt && fundingPromoNow < fundingPromoEndsAt;
+const fundingPromoIsActive = new Date() < fundingPromoEndsAt;
 
 if (fundingPromoIsActive) {
   const promoBanner = document.querySelector('[data-funding-promo]');
